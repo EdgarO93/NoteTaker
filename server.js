@@ -4,7 +4,7 @@ const fs = require('fs');
 const util = require('util');
 
 // Helper method for generating unique ids
-const uuid = require('./assets/js/helpers/uuid');
+const uuid = require('../assets/js/helpers/uuid');
 
 const PORT = 3001;
 
