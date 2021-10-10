@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-
+// returns notes.html
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'), console.log("going to notes"))
 
@@ -56,11 +56,25 @@ app.post('/api/notes', (req, res) => {
 
 });
 
-// route to retun the index.html
+// route to return the index.html
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'), console.log("going home")));
 
+// deletes the note object
+app.delete("/api/notes/:id", function (req, res) {
+  let notePath = path.join(__dirname, "/db/db.json");
+  // function to delete note by id
+
+
+  //will have to move notes
+       
+  // maybe re write db.json file 
+
+});
+
+
+
 //the server to start listening
 app.listen(PORT, () =>
-    console.log(`App listening at http://localhost:${PORT} 🚀`)
-  );
+  console.log(`App listening at http://localhost:${PORT} 🚀`)
+);
