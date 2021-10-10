@@ -1,13 +1,13 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const util = require('util');
+// const util = require('util');
 const noteData = require('./db/db.json');
 
 // Helper method for generating unique ids
 const uuid = require('./public/assets/js/helpers/uuid');
 
-const PORT = 3001;
+const PORT = process.env.port || 3001;
 
 const app = express();
 
@@ -16,20 +16,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// GET route for html files
-app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
-);
 
 app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/notes.html'))
+  res.sendFile(path.join(__dirname, '/public/notes.html'), console.log("going to notes"))
 
 );
 
 // GET route using DB.JSON file
 app.get("/api/notes", (req, res) =>
   fs.readFile(path.join(__dirname, './db/db.json'), "utf-8", function (err, data) {
-    if(err){
+    if (err) {
       throw err;
     }
     const notes = JSON.parse(data);
@@ -41,7 +37,7 @@ app.post('/api/notes', (req, res) => {
   fs.readFile(path.join(__dirname, './db/db.json'), "utf-8", function (err, data) {
     if (err) {
       console.log(err);
-  }
+    }
     const notes = JSON.parse(data);
     console.log('parse done', notes)
     const noteRequest = req.body;
@@ -60,13 +56,11 @@ app.post('/api/notes', (req, res) => {
 
 });
 
-// fallback route for when a user attempts to visit routes that doesn't exist
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'));
-  console.log("Link not found, returning home")
-});
+// route to retun the index.html
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'), console.log("going home")));
 
 //the server to start listening
 app.listen(PORT, () =>
-  console.log(`App listening at http://localhost:${PORT} 🚀`)
-);
+    console.log(`App listening at http://localhost:${PORT} 🚀`)
+  );
