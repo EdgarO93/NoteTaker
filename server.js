@@ -32,6 +32,20 @@ fs.readFile(path.join(__dirname, './db/db.json'), "utf-8", function(err, data) {
   res.json(Jnotes);
 }));
 
+// poste route using DB.JSON file
+app.post('/api/notes', (req, res) => {
+  fs.readFile(path.join(__dirname, './db/db.json'), "utf-8", function(err, data) {
+      console.log('test', data, err)
+      const Jnotes = JSON.parse(data);
+      console.log('parse done', Jnotes)
+      Jnotes.push(req.body);
+      fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(Jnotes), "utf-8");
+      res.json("new note added!");
+  });
+  
+});
+
+
 //the server to start listening
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
