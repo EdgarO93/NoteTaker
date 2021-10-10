@@ -56,7 +56,11 @@ app.post('/api/notes', (req, res) => {
 
 });
 
-
+// Fallback route for when a user attempts to visit routes that doesn't exist
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+  console.log("Link not found, returning home")
+});
 
 //the server to start listening
 app.listen(PORT, () =>
