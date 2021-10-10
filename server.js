@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// GET Route for homepage
+// GET Route for notes 
 app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/notes.html'))
 );
