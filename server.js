@@ -15,12 +15,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// GET Route for notes 
+// GET Route for html files
 app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, '/notes.html'))
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
+app.get("/notes", function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/notes.html"));
 
+});
+
+//the server to start listening
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
