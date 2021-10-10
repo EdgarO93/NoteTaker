@@ -20,30 +20,42 @@ app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
-app.get("/notes", (req, res)  =>
+app.get("/notes", (req, res) =>
   res.sendFile(path.join(__dirname, "/public/index.html"))
 
 );
 
 // GET route using DB.JSON file
-app.get("/api/notes",(req, res)  =>
-fs.readFile(path.join(__dirname, './db/db.json'), "utf-8", function(err, data) {
-  const Jnotes = JSON.parse(data);
-  res.json(Jnotes);
-}));
+app.get("/api/notes", (req, res) =>
+  fs.readFile(path.join(__dirname, './db/db.json'), "utf-8", function (err, data) {
+    const notes = JSON.parse(data);
+    res.json(notes);
+  }));
 
 // poste route using DB.JSON file
 app.post('/api/notes', (req, res) => {
-  fs.readFile(path.join(__dirname, './db/db.json'), "utf-8", function(err, data) {
-      console.log('test', data, err)
-      const Jnotes = JSON.parse(data);
-      console.log('parse done', Jnotes)
-      Jnotes.push(req.body);
-      fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(Jnotes), "utf-8");
-      res.json("new note added!");
+  fs.readFile(path.join(__dirname, './db/db.json'), "utf-8", function (err, data) {
+    if (err) {
+      console.log(err);
+  }
+    const notes = JSON.parse(data);
+    console.log('parse done', notes)
+    const noteRequest = req.body;
+    const newNote = {
+      id: uuidd(),
+      title: noteRequest.title,
+      text: noteRequest.text,
+    };
+    notes.push(newNote);
+    res.json(newNote);
+
+    fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(notes, null, 2), "utf-8", (function (err) {
+      if (err) throw err; console.log("new note added!")
+    }));
   });
-  
+
 });
+
 
 
 //the server to start listening
