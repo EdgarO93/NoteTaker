@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const util = require('util');
+const noteData = require('./db/db.json');
 
 // Helper method for generating unique ids
 const uuid = require('./public/assets/js/helpers/uuid');
@@ -17,17 +18,20 @@ app.use(express.static('public'));
 
 // GET route for html files
 app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/notes.html'))
+  res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
-app.get("/notes", (req, res) =>
-  res.sendFile(path.join(__dirname, "/public/index.html"))
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
 
 );
 
 // GET route using DB.JSON file
 app.get("/api/notes", (req, res) =>
   fs.readFile(path.join(__dirname, './db/db.json'), "utf-8", function (err, data) {
+    if(err){
+      throw err;
+    }
     const notes = JSON.parse(data);
     res.json(notes);
   }));
@@ -42,7 +46,7 @@ app.post('/api/notes', (req, res) => {
     console.log('parse done', notes)
     const noteRequest = req.body;
     const newNote = {
-      id: uuidd(),
+      id: uuid(),
       title: noteRequest.title,
       text: noteRequest.text,
     };
@@ -56,7 +60,7 @@ app.post('/api/notes', (req, res) => {
 
 });
 
-// Fallback route for when a user attempts to visit routes that doesn't exist
+// fallback route for when a user attempts to visit routes that doesn't exist
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'));
   console.log("Link not found, returning home")
