@@ -3,5 +3,10 @@
     "title": "Test Title",
     "text": "Test text"
   },
-  {}
+  {},
+  {
+    "id": "8bc1",
+    "title": "Local Host test",
+    "text": "Test in local"
+  }
 ]
