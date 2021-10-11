@@ -7,7 +7,7 @@ const fs = require('fs');
 // Helper method for generating unique ids
 const uuid = require('./public/assets/js/helpers/uuid');
 
-const PORT = process.env.port || 80;
+const PORT = process.env.port || 3001;
 
 const app = express();
 
