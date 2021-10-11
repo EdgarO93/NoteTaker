@@ -60,16 +60,22 @@ app.post('/api/notes', (req, res) => {
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'), console.log("going home")));
 
-// deletes the note object
-app.delete("/api/notes/:id", function (req, res) {
-  let notePath = path.join(__dirname, "/db/db.json");
-  // function to delete note by id
 
-
-  //will have to move notes
-       
-  // maybe re write db.json file 
-
+// delete request to delete note by id by grabbing JSON
+app.delete("/api/notes/:id", (req, res) => {
+  // get JSON data and then parsed to noteParser
+  let noteData = fs.readFileSync('./db/db.json');  
+  let noteParser = JSON.parse(noteData);
+   // creating new array that was parsedINT
+  const notesReceived = noteParser.filter(n => parseInt(n.id) !== parseInt(req.params.id)); 
+  // new array is being indexedOf so that the ID position is received to notesIndex
+  const notesIndex = noteParser.indexOf(notesReceived);   
+  // an updated noteParser array is being returned with the splice and without the deleted nte 
+  noteParser.splice(notesIndex);
+  //  rerites db.json file with noteParser
+  fs.writeFileSync(__dirname + "/db/db.json", JSON.stringify(noteParser), (err, data) => 
+  { if (err) throw err; res.json(noteParser) });
+  res.sendFile(path.join(__dirname,'public/notes.html')); 
 });
 
 
