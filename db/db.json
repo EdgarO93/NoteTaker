@@ -1,17 +1,1 @@
-[
-  {
-    "id": "1aa2",
-    "title": "Test Title",
-    "text": "Test text"
-  },
-  {
-    "id": "8bc1",
-    "title": "Local Host test",
-    "text": "Test in local"
-  },
-  {
-    "id": "ca3c",
-    "title": "test2",
-    "text": "test2"
-  }
-]
+[{"id":"1aa2","title":"Test Title","text":"Test text"},{"id":"8bc1","title":"Local Host test","text":"Test in local"},{"id":"ca3c","title":"test2","text":"test2"},{"id":"5c73","title":"New Note Test","text":"This note can be deleted."}]
