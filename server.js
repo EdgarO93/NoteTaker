@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 // const util = require('util');
-const noteData = require('./db/db.json');
+// const noteData = require('./db/db.json');
 
 // Helper method for generating unique ids
 const uuid = require('./public/assets/js/helpers/uuid');
