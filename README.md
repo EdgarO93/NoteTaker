@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-Application that can be used to write and save notes using express.
+Application that can be used to write and save notes using Node.js and Express. It was deployed on heroku app. I enjoyed working on it while building up on my back end coding skills. Building the routes and parsing the JSON data was challenging. I was able to use insomia to test out the routes. I think for my next version, I would like to alter the design of the site and allow the notes to be edited after saving. 
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ Application that can be used to write and save notes using express.
 None. Visit deployed site at https://edgars-note-taker.herokuapp.com/
 
 ### Usage
-Click on the Get Started button. View notes on the left column or click on note on the right to type a new note. Save note by clicking the save icon. Click on plus to start a new note.
+Click on the Get Started button. View notes on the left column or click on note on the right to type a new note. Save note by clicking the save icon. Click on plus to start a new note. Click on the trashcan icon to delete. 
 
 ### Contributing
 Feel free to fork or clone this repo and make your own versions.
@@ -28,7 +28,10 @@ Feel free to fork or clone this repo and make your own versions.
 No tests.
 
 ###  Screenshot 
-To add screenshots
+![plot](public/assets/images/test.png)
+
+![plot](public/assets/images/test1.png)
+![plot](public/assets/images/test2.png)
 
 ###  License
 
