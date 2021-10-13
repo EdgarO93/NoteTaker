@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-Application that can be used to write and save notes using Node.js and Express. It was deployed on heroku app. I enjoyed working on it while building up on my back end coding skills. Building the routes and parsing the JSON data was challenging. I was able to use insomia to test out the routes. I think for my next version, I would like to alter the design of the site and allow the notes to be edited after saving. 
+Application that can be used to write and save notes using Node.js and Express. It was deployed on the Heroku app. I enjoyed working on it while building up on my back end coding skills. Building the routes and parsing the JSON data was challenging. I was able to use Insomia to test out the routes before deploying. I think for my next version, I would like to alter the design of the site and allow the notes to be edited after saving. 
 
 ## Table of Contents
 
@@ -10,7 +10,7 @@ Application that can be used to write and save notes using Node.js and Express. 
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Tests](#tests)
-- [Screenshot](#screenshot)
+- [Screenshots](#screenshots)
 - [License](#license)
 - [Questions](#questions)
 - [Acknowledgments](#acknowledgments)
@@ -25,11 +25,10 @@ Click on the Get Started button. View notes on the left column or click on note 
 Feel free to fork or clone this repo and make your own versions.
 
 ### Tests
-No tests.
+None.
 
-###  Screenshot 
+###  Screenshots 
 ![plot](public/assets/images/test.png)
-
 ![plot](public/assets/images/test1.png)
 ![plot](public/assets/images/test2.png)
 
